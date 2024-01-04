@@ -2,7 +2,9 @@
 
 ## hadoop-azure-token-providers
 
-The [`hadoop-azure` library](https://hadoop.apache.org/docs/stable/hadoop-azure/abfs.html) supports supplying a [custom token provider](https://hadoop.apache.org/docs/stable/hadoop-azure/abfs.html#Custom_OAuth_2.0_Token_Provider) for getting accessing tokens for Azure Storage.
+The package was built in order to enable a simple way of accessing data in Azure Data Lake when developing a PySpark solution locally in a Dev Container.
+
+The [`hadoop-azure` library](https://hadoop.apache.org/docs/stable/hadoop-azure/abfs.html) supports supplying a [custom token provider](https://hadoop.apache.org/docs/stable/hadoop-azure/abfs.html#Custom_OAuth_2.0_Token_Provider) for getting accessing tokens when using the `abfs(s)://` protocol for accessing Azure Blob Storage / Azure Data Lake.
 
 This package contains implementations of custom token providers (currently only `AzureCliCredentialTokenProvider`).
 
@@ -45,9 +47,7 @@ use Maven to deploy the package:
 
 ### Usage from PySpark
 
-The package was built in order to enable a simple way of accessing data in Azure Data Lake when developing a PySpark solution locally in a Dev Container.
-
-To use the custom token providers, include the `org.apache.hadoop:hadoop-azure` and `com.endjin.hadoop:hadoop-azure-token-providers` packages when creating your Spark session. You will also need to add [the `endjin-labs` `hadoop` Artifacts feed](https://dev.azure.com/endjin-labs/hadoop/_artifacts/feed/hadoop) as an extra Maven repository.
+To use the custom token providers in PySpark, include the `org.apache.hadoop:hadoop-azure` and `com.endjin.hadoop:hadoop-azure-token-providers` packages when creating your Spark session. You will also need to add [the `endjin-labs` `hadoop` Artifacts feed](https://dev.azure.com/endjin-labs/hadoop/_artifacts/feed/hadoop) as an extra Maven repository.
 
 e.g.
 
@@ -86,4 +86,6 @@ This will then use the token provider by default for getting access tokens for a
 
 #### `AzureCliCredentialTokenProvider`
 
-This token provider relies on the credentials from the Azure CLI in order to retrieve an access token for Azure Storage. When configured, ensure that `az login` has been run (for the relevant tenant) before attempting to use Spark to access data in the Data Lake / Storage Account.
+This token provider relies on the credentials from the Azure CLI in order to retrieve an access token for Azure Storage. See [these instructions for how to install the Azure CLI](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli) in your development environment.
+
+When `AzureCliCredentialTokenProvider` is configured, ensure that `az login` has been run (for the relevant tenant) before attempting to use Spark to access data in the Data Lake / Storage Account.
