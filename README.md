@@ -20,7 +20,7 @@ Use Maven to build the package:
 
 The package is currently configured to deploy to [the public `hadoop` Artifacts feed](https://dev.azure.com/endjin-labs/hadoop/_artifacts/feed/hadoop) in the `endjin-labs` Azure DevOps instance as `com.endjin.hadoop:hadoop-azure-token-providers`.
 
-You need to provide credentials in a settings file to deploy to the feed. Create a `settings.xml` file in the `~/.m2` folder which the following contents:
+You need to provide credentials in a settings file to deploy to the feed. Create a `settings.xml` file in the `~/.m2` folder with the following contents:
 
 ```xml
 <settings>
