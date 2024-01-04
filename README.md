@@ -82,7 +82,7 @@ spark.sparkContext._jsc.hadoopConfiguration().set(
 )
 ```
 
-This will then use the token provider by default for getting access tokens for all Azure Storage accounts.
+This will then use the token provider by default for getting access tokens for all accounts when using `abfs(s)://` protocol.
 
 #### `AzureCliCredentialTokenProvider`
 
